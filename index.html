@@ -1,0 +1,120 @@
+<html>
+
+<head>
+
+<title>Moving Calculator</title>
+<!--<link href="/stylesheets/main.css?1355327122" media="screen" rel="stylesheet" type="text/css">-->
+
+</head>
+<body onload="initialize()">
+
+<div class="content-wrapper">
+<div class="header">
+</div>
+<div class="main">
+<h1>Moving Calculator</h1>
+<p>You can use this handy form to estimate how long your move will take:</p>
+</div>
+<div id="moving_calculator">
+    <div class="clearfix field" id="service_type_section">
+        <div class="left">What kind of service do you need?</div>
+        <select id="service_type" name="service_type" class="parameter">
+        <option value="load_only">Load Only</option>
+        <option value="unload_only">Unload Only</option>
+        <option value="load_unload">Both</option>
+        </select>
+    </div>
+    <div class="clearfix field" id="vehicle_size_section">
+        <div class="left">How big is the vehicle?</div>
+        <select id="vehicle_size" name="vehicle_size" class="parameter">
+        <option value="10">10 ft.</option>
+        <option value="14">14 ft.</option>
+        <option value="17">17 ft.</option>
+        <option value="24">24 ft.</option>
+        <option value="26">26 ft.</option>
+        </select>
+    </div>
+    <div class="clearfix field" id="percent_full_section">
+        <div class="left">How full do you expect the vehicle to be when everything is loaded?</div>
+        <select id="percent_full" name="percent_full" class="parameter">
+        <option value=".1">10%</option>
+        <option value=".2">20%</option>
+        <option value=".3">30%</option>
+        <option value=".4">40%</option>
+        <option value=".5">50%</option>
+        <option value=".6">60%</option>
+        <option value=".7">70%</option>
+        <option value=".8">80%</option>
+        <option value=".9">90%</option>
+        <option selected="selected" value="1">100%</option>
+        </select>
+    </div>
+
+    <div id="floors_section" class="parameter">
+        <div class="left">How many floors above ground level?</div>
+        <input id="floors" name="floors" type="text" value="0">
+    </div>
+    <div id="elevator_section">
+        <label for="elevator">Are we using an elevator?</label>
+        <input id="elevator" name="elevator" class="parameter" type="checkbox">
+    </div>
+    <div id="truck_distance_section" class="parameter">
+        <div class="left">How many feet away from the door is the truck?</div>
+        <select id="truck_distance" name="truck_distance" class="parameter">
+        <option value="1">0-50 ft.</option>
+        <option value="2">51-100 ft.</option>
+        <option value="3">101-150 ft.</option>
+        <option value="4">151-200 ft.</option>
+        </select>
+        </div>
+    <div id="disassembly_section">
+        <div class="clearfix field">
+            <div class="left">How many pieces of furniture need disassembly/reassembly?</div>
+            <input id="disassembly" name="disassembly" class="parameter" style="width: 50px;" type="text" value="0">
+        </div>
+        <div class="note">(Note: We generally do not reassemble a piece unless we were the ones who disassembled it in the first place)</div>
+    </div>
+    <div class="clearfix field" id="movers_section">
+        <div class="left">How many movers do you want on the job?</div>
+        <select id="movers" name="movers" class="parameter">
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        </select>
+    </div>
+    <div id="location_section">
+        <div>
+            <label for="first_location">Starting location (i.e., where all items are currently located)</label>
+        </div>
+        <input id="first_location" name="first_location" class="parameter" onFocus="geolocate()" type="text">
+        <label id="distance_to_first"></label>
+        
+       <div style="display: none;" id="additional_locs">
+            <div>
+                <label for="second_location">Second location (if applicable)</label>
+            </div>
+            <input id="second_location" name="second_location" class="parameter" onFocus="geolocate()" type="text">
+            <label id="distance_to_second"></label>
+
+            <div>
+                <label for="third_location">Third location (our offices)</label>
+            </div>
+            <span id="third_location">Burnsville, MN 55337</span>
+            <label id="distance_to_third"></label>
+       </div>
+        <p id="location_tracker">
+        </p>
+    </div>
+    <div><button onclick="movingCalc.calculateDistance();">Estimate time</button></div>
+    <div class="result-section">
+        <div id="result">120 minutes</div>
+    </div>
+    
+    
+    <div id="lowerSection">
+    </div>
+</div>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
+<script src="movingCalc.js" type="text/javascript">
+    </script>
+</body></html>
